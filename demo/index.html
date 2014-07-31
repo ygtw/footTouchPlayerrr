@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<head>
+  <title>footPlayer</title>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="video-js.css" rel="stylesheet" type="text/css">
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="video.js"></script>
+
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+
+
+  $(function(){
+if(navigator.userAgent.match(/Android/i)){
+    window.scrollTo(0,1);
+ }
+
+
+
+(function localFileVideoPlayerInit(win) {
+    var URL = win.URL || win.webkitURL,
+        displayMessage = (function displayMessageInit() {
+            var node = document.querySelector('#message');
+
+            return function displayMessage(message, isError) {
+                node.innerHTML = message;
+                node.className = isError ? 'error' : 'info';
+            };
+        }()),
+        playSelectedFile = function playSelectedFileInit(event) {
+            var file = this.files[0];
+
+            var type = file.type;
+
+            var videoNode = document.querySelector('video');
+
+            var canPlay = videoNode.canPlayType(type);
+
+            canPlay = (canPlay === '' ? 'no' : canPlay);
+
+            var message = 'Can play type "' + type + '": ' + canPlay;
+
+            var isError = canPlay === 'no';
+
+            displayMessage(message, isError);
+
+               
+
+                             $("#fileselect").hide();
+                $("#stat").html('<i class="fa fa-play"></i>')
+
+            if (isError) {
+                alert('格式不支援')
+                             $("#fileselect").show();
+                            $("#stat").html('')
+
+                return;
+            }
+
+
+
+            var fileURL = URL.createObjectURL(file);
+
+            videoNode.src = fileURL;
+        },
+        inputNode = document.querySelector('input');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    if (!URL) {
+        displayMessage('Your browser is not ' + 
+           '<a href="http://caniuse.com/bloburls">supported</a>!', true);
+        
+        return;
+    }                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    inputNode.addEventListener('change', playSelectedFile, false);
+}(window));
+
+
+});
+
+$( document ).ready(function() {
+  // Handler for .ready() called.
+            videojs.options.flash.swf = "video-js.swf";
+
+            $("#playy").bind('', function(){
+
+              testt()
+
+            })
+            $("#playy").bind('onclick', function(){
+
+              testt()
+
+            })
+
+});
+
+
+
+  </script>
+
+  <script type="text/javascript">
+function tapHandler( event ){
+    testt()
+  }
+
+function testt (argument) {
+  // body...
+  var myPlayer = videojs("example_video_1");
+
+  var isPaused = myPlayer.paused();
+  console.log(isPaused)
+  if(isPaused)
+  {
+    $("#stat").html('<i class="fa fa-play"></i>')
+    //     <i class="fa fa-pause"></i>
+var whereYouAt = myPlayer.currentTime();
+myPlayer.currentTime(whereYouAt-2); // 2 minutes into the video
+
+//
+
+    myPlayer.play()
+
+  }
+  else
+  {
+        $("#stat").html('<i class="fa fa-pause"></i>')
+
+ myPlayer.pause()
+  }
+
+}
+
+
+  </script>
+
+
+<style type="text/css">
+
+body
+{
+  margin: 0;
+  padding: 0;
+}
+
+#playy , #stat {
+
+    height:100vh;
+
+
+}
+
+</style>
+</head>
+<body>
+
+    <div id="playy" style="background: lightgray " onclick="testt()">
+      <br>
+     <h1> footPlayer</h1>
+
+<div id="fileselect">
+  選擇您的逐字稿聲音檔<br>
+<input id="fileinput" type="file" accept="*"/>
+</div>
+
+<div id="stat" style="font-size:100pt; text-align:center">
+</div>
+
+    </div>
+
+
+  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="preload" width="100%" height="100">
+    <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+<div id="message"></div>
+
+ygtw @ 2014
+</body>
+</html>
