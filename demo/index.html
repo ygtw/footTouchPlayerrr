@@ -26,7 +26,7 @@ if(navigator.userAgent.match(/Android/i)){
     window.scrollTo(0,1);
  }
 
-
+pflag = 0 ;
 
 (function localFileVideoPlayerInit(win) {
     var URL = win.URL || win.webkitURL,
@@ -73,6 +73,7 @@ if(navigator.userAgent.match(/Android/i)){
             var fileURL = URL.createObjectURL(file);
 
             videoNode.src = fileURL;
+            pflag =1 ;
         },
         inputNode = document.querySelector('input');
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
@@ -116,6 +117,8 @@ function tapHandler( event ){
   }
 
 function testt (argument) {
+
+  if(pflag==0) return;
   // body...
   var myPlayer = videojs("example_video_1");
 
@@ -174,7 +177,8 @@ body
      <h1> footPlayer </h1>
 
 <div id="fileselect">
-  選擇您的逐字稿聲音檔<br>
+  選擇您的逐字稿聲音檔<br><br>
+  請放心，您的檔案不會被上傳<br><br>
         <img src="open-file-icon.png" onclick="openfiles()"/>
 
 <input id="fileinput" type="file" accept="*" style="display:none"/>
