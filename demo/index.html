@@ -58,7 +58,8 @@ pflag = 0 ;
                
 
                              $("#fileselect").hide();
-                $("#stat").html('<i class="fa fa-play"></i>')
+                    $("#stat").html('<i class="fa fa-play"></i><br><span style="font-size:xx-small">腳輕觸螢幕暫停</span>')
+
 
             if (isError) {
                 alert('格式不支援')
@@ -74,6 +75,13 @@ pflag = 0 ;
 
             videoNode.src = fileURL;
             pflag =1 ;
+              var myPlayer = videojs("example_video_1");
+
+                myPlayer.play()
+
+
+
+
         },
         inputNode = document.querySelector('input');
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
@@ -126,7 +134,8 @@ function testt (argument) {
   console.log(isPaused)
   if(isPaused)
   {
-    $("#stat").html('<i class="fa fa-play"></i>')
+                   $("#stat").html('<i class="fa fa-play"></i>')
+ 
     //     <i class="fa fa-pause"></i>
 var whereYouAt = myPlayer.currentTime();
 myPlayer.currentTime(whereYouAt-2); // 2 minutes into the video
