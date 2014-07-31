@@ -125,6 +125,14 @@ function tapHandler( event ){
   }
 
 function testt (argument) {
+//
+ // var myPlayer2 = videojs("vv");
+ // myPlayer2.play()
+ // myPlayer2.muted(true);
+var element = document.getElementById('vv');
+    element.muted = "muted";
+    element.play()
+
 
   if(pflag==0) return;
   // body...
@@ -208,7 +216,7 @@ body
   </video>
 
 
-<video width="320" height="240" controls  preload="preload"    muted loop autoplay>
+<video id="vv" width="320" height="240" controls  preload="preload"    muted loop autoplay>
     <source src="http://video-js.zencoder.com/oceans-clip.mp4" />
   Your browser does not support the video tag.
 </video>
