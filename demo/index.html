@@ -142,6 +142,10 @@ myPlayer.currentTime(whereYouAt-2); // 2 minutes into the video
 
 }
 
+function openfiles (argument) {
+  // body...
+  $("#fileinput").click()
+}
 
   </script>
 
@@ -165,13 +169,17 @@ body
 </head>
 <body>
 
-    <div id="playy" style="background: lightgray " onclick="testt()">
+    <div id="playy" style="background: lightgray; text-align:center " onclick="testt()">
       <br>
      <h1> footPlayer </h1>
 
 <div id="fileselect">
-  1.選擇您的逐字稿聲音檔<br>
-<input id="fileinput" type="file" accept="*"/>
+  選擇您的逐字稿聲音檔<br>
+        <img src="open-file-icon.png" onclick="openfiles()"/>
+
+<input id="fileinput" type="file" accept="*" style="display:none"/>
+
+
 </div>
 
 <div id="stat" style="font-size:100pt; text-align:center">
